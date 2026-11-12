@@ -63,4 +63,12 @@ No hyphens in visible copy, no italics, no words above semibold, no exclamation 
 
 ## Not done here
 
-No analytics, no cookie banner, no backend. The enquiry form opens the visitor's mail client with the message prefilled, so nothing is stored anywhere. If you later add a real form endpoint, wire it into the submit handler and delete the `mailto:` fallback.
+No analytics and no cookie banner. The enquiry form posts to FormSubmit (`formsubmit.co`), which emails the fields to the address below; the site stores nothing. A honeypot field (`_gotcha`/`_honey`) filters bots, and if the request fails the page offers the message for copying plus a `mailto:` link, so an enquiry is never lost with the visitor.
+
+Form delivery lives in one constant near the top of the inline script:
+
+    var FORM_ENDPOINT = 'https://formsubmit.co/ajax/stefangel90@gmail.com';
+
+To move to Formspree, create a form there and replace that value with `https://formspree.io/f/<id>`. The payload is JSON with `name`, `company`, `email`, `message` and `_subject`, which both providers accept. If you change provider, update the privacy paragraph in `index.html` to name it.
+
+The form also has a plain `action` pointing at FormSubmit, so a visitor with JavaScript disabled still submits through the provider's own page rather than nothing.
