@@ -32,7 +32,7 @@
   --s-400:32px; --s-500:40px; --s-600:48px; --s-700:64px; --s-800:80px; --s-900:96px;
   --r-xs:2px; --r-sm:4px; --r-md:6px; --r-lg:8px; --r-xl:12px; --r-2xl:16px; --r-3xl:24px; --r-full:9999px;
   --bg:#131209; --surface-1:#181818; --surface-2:#1F1F1F; --surface-3:#272727; --surface-4:#313131;
-  --text:#FFFFFF; --muted:#9B9B9B; --faint:#8A8A8A; --line:rgba(255,255,255,.10); --line-strong:rgba(255,255,255,.18);
+  --text:#FFFFFF; --muted:#A6A6A6; --faint:#959595; --line:rgba(255,255,255,.10); --line-strong:rgba(255,255,255,.18);
   --accent:#F5A524; --accent-ink:#131209; --accent-hover:#FFB84D; --accent-tint:rgba(245,165,36,.12);
   --danger:#FF8A7A;
   --scrim-1:rgba(19,18,9,.96); --scrim-2:rgba(19,18,9,.86); --nav-glass:rgba(24,24,24,.72); --line-hover:rgba(255,255,255,.30);
@@ -98,7 +98,10 @@ section[id]{scroll-margin-top:88px}
 .btn:active{transform:scale(.98)}
 .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line-strong)}
 .btn-ghost:hover{background:var(--surface-3)}
-.nav .btn{font-size:14px;line-height:20px}
+.nav-cta{color:var(--text);font-size:14px;line-height:20px;font-weight:500;padding:var(--s-75) var(--s-100);
+  border-radius:var(--r-full);border:1px solid var(--line-strong);
+  transition:background-color .3s var(--ease),border-color .3s var(--ease)}
+.nav-cta:hover{background:var(--surface-3);border-color:transparent}
 .burger{display:none;background:transparent;border:1px solid var(--line-strong);border-radius:var(--r-full);
   width:44px;height:44px;position:relative;cursor:pointer}
 .burger span{position:absolute;left:12px;right:12px;height:2px;background:var(--text);border-radius:var(--r-full);
@@ -124,10 +127,10 @@ section[id]{scroll-margin-top:88px}
 .panel[data-open="true"] a:nth-child(4){transition-delay:180ms}
 
 /* ---------- hero ---------- */
-.hero{padding:calc(var(--s-900) + var(--s-600)) 0 var(--s-800)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) var(--portrait-w);gap:var(--s-700);align-items:center}
+.hero{padding:calc(var(--s-900) + var(--s-600)) 0 var(--s-700)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) var(--portrait-w);gap:var(--s-700);align-items:start}
 .hero-copy{min-width:0}
-.portrait{margin:0;border-radius:var(--r-3xl);overflow:hidden;border:1px solid var(--line);
+.portrait{margin:var(--s-50) 0 0;border-radius:var(--r-3xl);overflow:hidden;border:1px solid var(--line);
   background:var(--surface-1);position:relative}
 .portrait img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;display:block}
 .portrait figcaption{position:absolute;left:var(--s-200);bottom:var(--s-200);right:var(--s-200);
@@ -137,13 +140,16 @@ section[id]{scroll-margin-top:88px}
 .hero h1{max-width:var(--measure);margin:0 0 var(--s-300);
   background:linear-gradient(90deg,var(--text) 55%,var(--muted));-webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;color:transparent;text-wrap:balance}
-.hero p.sub{max-width:var(--measure);margin:0 0 var(--s-400);color:var(--muted);font-size:20px;line-height:28px;text-wrap:pretty}
+.hero p.sub{max-width:var(--measure);margin:0 0 var(--s-100);color:var(--muted);font-size:20px;line-height:28px;text-wrap:pretty}
+.hero p.sub-note{max-width:var(--measure);margin:0 0 var(--s-400);color:var(--faint);font-size:16px;line-height:24px;text-wrap:pretty}
+.hero-cv{margin:0 0 var(--s-300);color:var(--faint)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:var(--s-100);margin-bottom:var(--s-300)}
 .hero-actions .btn{padding:var(--s-100) var(--s-300);border-radius:var(--r-xl)}
-.proofline{display:flex;flex-wrap:wrap;gap:var(--s-100) var(--s-300);color:var(--faint);font-size:14px;line-height:20px;margin-bottom:var(--s-100)}
+.proofline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-100) var(--s-300);
+  color:var(--faint);font-size:14px;line-height:20px;margin-bottom:var(--s-100)}
 .proofline span{display:inline-flex;align-items:center;gap:var(--s-75)}
 .proofline span::before{content:"";width:5px;height:5px;border-radius:var(--r-full);background:var(--accent);opacity:.7}
-.risk{margin:var(--s-75) 0 0;color:var(--muted);max-width:min(520px,100%)}
+.risk{margin:var(--s-200) 0 0;color:var(--muted);max-width:min(520px,100%)}
 
 /* ---------- freight strip ---------- */
 .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:var(--s-600) 0}
@@ -196,6 +202,11 @@ section[id]{scroll-margin-top:88px}
   background:var(--accent)}
 .timeline .when{color:var(--faint);font-size:12px;line-height:16px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
 .timeline h3{margin:var(--s-25) 0 var(--s-75)}
+.roles{display:grid;gap:var(--s-200);margin:var(--s-200) 0 0}
+.roles div{display:grid;grid-template-columns:170px minmax(0,1fr);gap:var(--s-300);border-top:1px solid var(--line);padding-top:var(--s-200)}
+.roles dt{color:var(--text);font-size:14px;line-height:20px;font-weight:500}
+.roles dd{margin:0;color:var(--muted);font-size:16px;line-height:24px;max-width:62ch;text-wrap:pretty}
+@media (max-width:640px){.roles div{grid-template-columns:1fr;gap:var(--s-50);padding-top:var(--s-200)}}
 .timeline p{margin:0;color:var(--muted);max-width:560px;text-wrap:pretty}
 
 /* ---------- faq ---------- */
@@ -226,6 +237,12 @@ section[id]{scroll-margin-top:88px}
 .field[data-invalid="true"] .err{display:block}
 .form-msg{margin-top:var(--s-200);font-size:14px;line-height:20px;color:var(--accent)}
 .form-msg[data-kind="error"]{color:var(--danger)}
+.form-fallback{display:none;margin-top:var(--s-200);padding:var(--s-200);border:1px solid var(--line);
+  border-radius:var(--r-xl);background:var(--surface-2)}
+.form-fallback[data-show="true"]{display:block}
+.form-fallback p{margin:0 0 var(--s-100);color:var(--muted);font-size:14px;line-height:20px}
+.form-fallback strong{color:var(--text);font-weight:500}
+.form-fallback .row{display:flex;flex-wrap:wrap;gap:var(--s-100)}
 #enquiry .btn{width:100%;padding:var(--s-100) var(--s-200)}
 .cv-download{margin:var(--s-300) 0 0;color:var(--faint)}
 .u-link{text-decoration:underline;text-underline-offset:3px}
@@ -260,6 +277,7 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
   .hero{padding:calc(var(--s-800) + var(--s-600)) 0 var(--s-600)}
 }
 @media (max-width:640px){
+  .proofline{grid-template-columns:1fr}
   .js .nav-links,.js .nav .btn{display:none}
   .js .burger{display:block}
   html:not(.js) .burger{display:none}
@@ -308,7 +326,7 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
       <a href="#certificates">Certificates</a>
       <a href="#questions">Questions</a>
     </div>
-    <a class="btn" href="#contact">Request my CV</a>
+    <a class="nav-cta" href="#contact">Request my CV</a>
     <button class="burger" aria-expanded="false" aria-controls="panel" aria-label="Menu"><span></span><span></span></button>
   </nav>
 </div>
@@ -325,11 +343,13 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
     <div class="wrap hero-grid">
       <div class="hero-copy">
       <h1 class="heading-1">C+E driver for Benelux,<br>Germany and Denmark</h1>
-      <p class="sub">Three years of international freight, ADR Basic and Tank, and pharma cold chain under GDP. Available immediately. Needs a base or a hotel for the 45 hour weekend rest.</p>
+      <p class="sub">Three years of long haul freight across Benelux, Scandinavia and northern Germany, with ADR Basic and Tank and pharma cold chain under GDP. Available immediately as an EU citizen, with no notice period.</p>
+      <p class="sub-note">For the 45 hour weekend rest I need a base or a hotel near the depot.</p>
       <div class="hero-actions">
         <a class="btn button-md" href="#contact">Request my CV</a>
         <a class="btn btn-ghost button-md" href="#certificates">See certificates</a>
       </div>
+      <p class="hero-cv caption-2">Or take the file directly: <a class="u-link" href="assets/Stefan-Angelovski-CV.pdf">CV as PDF, one page, 90 KB</a></p>
       <div class="proofline caption-2">
         <span>EU citizen, no work permit needed</span>
         <span>Available immediately</span>
@@ -351,7 +371,7 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
 
   <div class="strip">
     <div class="wrap strip-inner">
-      <span class="label">Freight carried for</span>
+      <span class="label">Freight customers</span>
       <ul>
         <li>DSV</li><li>LKW Walter</li><li>Jysk</li><li>Leman</li><li>Pfenning</li>
       </ul>
@@ -471,7 +491,11 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
         <li class="reveal">
           <span class="when">2023 to now</span>
           <h3 class="heading-6">International C+E driver, Benelux and Scandinavia</h3>
-          <p class="body-3">Long haul freight through European carriers, with GDP driver training through Leman's subcontractor Interlink. Pharma cold chain under GDP, curtain side freight for DSV and LKW Walter, retail distribution for Jysk, supermarket drops with temperature control, and terminal work at Malmö.</p>
+          <dl class="roles">
+            <div><dt>Freight customers</dt><dd>DSV, LKW Walter, Jysk and Pfenning: curtain-side freight, retail distribution and supermarket drops with temperature control.</dd></div>
+            <div><dt>Cold chain programme</dt><dd>Leman: GDP pharma loads. The Leman certificate names Interlink as the subcontractor carrying that work.</dd></div>
+            <div><dt>Routes</dt><dd>Benelux, Scandinavia and northern Germany, with terminal work in Malmö.</dd></div>
+          </dl>
         </li>
         <li class="reveal">
           <span class="when">2022 to 2023</span>
@@ -541,6 +565,13 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
             </div>
             <button class="btn button-md" type="submit">Send enquiry</button>
             <p class="form-msg" id="form-msg" role="status"></p>
+            <div class="form-fallback" id="form-fallback">
+              <p>If your mail app did not open, copy the message and send it to <strong>stefangel90@gmail.com</strong>.</p>
+              <div class="row">
+                <button class="btn btn-ghost button-sm" type="button" id="copy-enquiry">Copy the message</button>
+                <a class="btn btn-ghost button-sm" id="reopen-mail" href="mailto:stefangel90@gmail.com">Open my mail app</a>
+              </div>
+            </div>
           </form>
         </div>
       </div>
@@ -563,7 +594,7 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
   <div class="wrap">
     <h2 class="heading-6">Privacy and imprint</h2>
     <p class="body-6">
-      This site sets no cookies, runs no analytics and loads nothing from another domain. The font is served from this site. The enquiry form does not send anything to a server: it opens your own mail client with the message filled in. Anything you send by email is used to reply to you and for nothing else. Imprint: Stefan Angelovski, Sofia, Bulgaria, stefangel90@gmail.com.
+      This site sets no cookies, runs no analytics and loads nothing from another domain. The font is served from this site. The enquiry form does not send anything to a server: it opens your own mail client with the message filled in, and if that fails it can copy the message to your clipboard. Anything you send by email is used to reply to you and for nothing else. Imprint: Stefan Angelovski, Sofia, Bulgaria, stefangel90@gmail.com.
     </p>
   </div>
 </section>
@@ -669,6 +700,7 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
   // enquiry form: validate, then hand to the mail client
   var form = document.getElementById('enquiry');
   var msg = document.getElementById('form-msg');
+  var lastBody = '';
   form.addEventListener('submit', function(ev){
     ev.preventDefault();
     var bad = false;
@@ -680,6 +712,7 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
         ? /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)
         : val.length > 0;
       wrap.dataset.invalid = ok ? 'false' : 'true';
+      input.setAttribute('aria-invalid', ok ? 'false' : 'true');
       if(!ok && !bad){ input.focus(); }
       if(!ok){ bad = true; }
     });
@@ -704,6 +737,13 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
     btn.textContent = 'Opening your mail app';
     btn.disabled = true;
 
+    // an address to fall back on if no mail client is configured
+    var fb = document.getElementById('form-fallback');
+    var reopen = document.getElementById('reopen-mail');
+    if(fb){ fb.dataset.show = 'true'; }
+    if(reopen){ reopen.href = link; }
+    lastBody = body;
+
     // restore the button before handing off to the mail client, so the page is usable if it stays
     setTimeout(function(){ btn.textContent = 'Send enquiry'; btn.disabled = false; }, 2500);
     setTimeout(function(){ window.location.href = link; }, 80);
@@ -713,8 +753,46 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
   form.querySelectorAll('input,textarea').forEach(function(el){
     el.addEventListener('input', function(){
       el.closest('.field').dataset.invalid = 'false';
+      el.setAttribute('aria-invalid', 'false');
     });
   });
+
+  function showBox(text){
+    var box = document.getElementById('copy-box');
+    if(!box){
+      box = document.createElement('textarea');
+      box.id = 'copy-box'; box.readOnly = true; box.rows = 6;
+      box.setAttribute('aria-label', 'Your enquiry text, ready to copy');
+      document.getElementById('form-fallback').appendChild(box);
+    }
+    box.value = text;
+    box.style.cssText = 'width:100%;margin-top:var(--s-100);padding:var(--s-100) var(--s-200);border-radius:var(--r-lg);' +
+      'border:1px solid var(--line-strong);background:var(--surface-1);color:var(--text);font:inherit;font-size:14px;line-height:20px';
+    box.focus(); box.select();
+  }
+
+  var copyBtn = document.getElementById('copy-enquiry');
+  if(copyBtn){
+    copyBtn.addEventListener('click', function(){
+      var text = lastBody || '';
+      function done(ok){
+        copyBtn.textContent = ok ? 'Copied' : 'Select the text below';
+        setTimeout(function(){ copyBtn.textContent = 'Copy the message'; }, 2400);
+        if(!ok){ showBox(text); }
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(false); });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly','');
+        ta.style.position = 'fixed'; ta.style.left = '-9999px';
+        document.body.appendChild(ta); ta.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch(e){}
+        document.body.removeChild(ta); done(ok);
+      }
+    });
+  }
 })();
 </script>
 </body>
