@@ -228,6 +228,7 @@ section[id]{scroll-margin-top:88px}
 .contact-card h2{margin:0 0 var(--s-100)}
 .contact-card p.lead{margin:0 0 var(--s-400);color:var(--muted);max-width:520px;text-wrap:pretty}
 .contact-actions{display:flex;flex-wrap:wrap;gap:var(--s-100)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .field{display:flex;flex-direction:column;gap:var(--s-75);margin-bottom:var(--s-200)}
 .field label{font-size:14px;line-height:20px;font-weight:500;color:var(--muted)}
 .field input,.field textarea{background:var(--surface-2);border:1px solid var(--line-strong);color:var(--text);
@@ -551,7 +552,12 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
               <a class="u-link" href="assets/Stefan-Angelovski-CV.pdf">Download the CV as PDF</a>
             </p>
           </div>
-          <form id="enquiry" novalidate>
+          <form id="enquiry" novalidate method="POST" action="https://formsubmit.co/stefangel90@gmail.com">
+            <div class="hp" aria-hidden="true">
+              <label for="f-gotcha">Leave this field empty</label>
+              <input id="f-gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+              <input name="_honey" type="text" tabindex="-1" autocomplete="off">
+            </div>
             <div class="field" data-field="name">
               <label for="f-name">Your name</label>
               <input id="f-name" name="name" type="text" autocomplete="name" required>
@@ -574,7 +580,7 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
             <button class="btn button-md" type="submit">Send enquiry</button>
             <p class="form-msg" id="form-msg" role="status"></p>
             <div class="form-fallback" id="form-fallback">
-              <p>If your mail app did not open, copy the message and send it to <strong>stefangel90@gmail.com</strong>.</p>
+              <p>If the form did not go through, copy the message and send it to <strong>stefangel90@gmail.com</strong>.</p>
               <div class="row">
                 <button class="btn btn-ghost button-sm" type="button" id="copy-enquiry">Copy the message</button>
                 <a class="btn btn-ghost button-sm" id="reopen-mail" href="mailto:stefangel90@gmail.com">Open my mail app</a>
@@ -602,13 +608,15 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
   <div class="wrap">
     <h2 class="heading-6">Privacy and imprint</h2>
     <p class="body-6">
-      This site sets no cookies, runs no analytics and loads nothing from another domain. The font is served from this site. The enquiry form does not send anything to a server: it opens your own mail client with the message filled in, and if that fails it can copy the message to your clipboard. Anything you send by email is used to reply to you and for nothing else. Imprint: Stefan Angelovski, Sofia, Bulgaria, stefangel90@gmail.com.
+      This site sets no cookies and runs no analytics. The font and images are served from this site. The enquiry form sends the name, company, email address and message you type to FormSubmit (formsubmit.co), which relays them to my mailbox; FormSubmit processes them for that delivery only. Nothing is stored on this site. If the delivery fails, the page offers to copy your message so you can send it yourself. Anything you send is used to reply to you and for nothing else. Imprint: Stefan Angelovski, Sofia, Bulgaria, stefangel90@gmail.com.
     </p>
   </div>
 </section>
 
 <script>
 (function(){
+  // form delivery: replace with 'https://formspree.io/f/XXXXXXX' to switch providers
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/stefangel90@gmail.com';
   document.documentElement.classList.add('js');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var supportsIO = 'IntersectionObserver' in window;
@@ -733,28 +741,64 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
     }
     var name = form.name.value.trim();
     var company = form.company.value.trim();
+    var email = form.email.value.trim();
     var body = 'Name: ' + name + (company ? '\nCompany: ' + company : '') +
-               '\n\n' + form.message.value.trim();
+               '\nEmail: ' + email + '\n\n' + form.message.value.trim();
     var btn = form.querySelector('button[type=submit]');
     var link = 'mailto:stefangel90@gmail.com'
       + '?subject=' + encodeURIComponent('Route enquiry from ' + (company || name))
       + '&body=' + encodeURIComponent(body);
-
-    msg.dataset.kind = 'ok';
-    msg.textContent = 'Opening your mail app with the enquiry filled in.';
-    btn.textContent = 'Opening your mail app';
-    btn.disabled = true;
-
-    // an address to fall back on if no mail client is configured
     var fb = document.getElementById('form-fallback');
     var reopen = document.getElementById('reopen-mail');
-    if(fb){ fb.dataset.show = 'true'; }
-    if(reopen){ reopen.href = link; }
     lastBody = body;
 
-    // restore the button before handing off to the mail client, so the page is usable if it stays
-    setTimeout(function(){ btn.textContent = 'Send enquiry'; btn.disabled = false; }, 2500);
-    setTimeout(function(){ window.location.href = link; }, 80);
+    // honeypot: a bot fills the hidden field, a person never sees it
+    if(form._gotcha && form._gotcha.value){ return; }
+
+    function fail(text){
+      msg.dataset.kind = 'error';
+      msg.setAttribute('aria-live', 'assertive');
+      msg.textContent = text;
+      if(fb){ fb.dataset.show = 'true'; }
+      if(reopen){ reopen.href = link; }
+      btn.textContent = 'Send enquiry'; btn.disabled = false;
+      form.removeAttribute('aria-busy');
+    }
+
+    msg.dataset.kind = 'ok';
+    msg.setAttribute('aria-live', 'polite');
+    msg.textContent = 'Sending your enquiry.';
+    btn.textContent = 'Sending';
+    btn.disabled = true;
+    form.setAttribute('aria-busy', 'true');
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({
+        name: name,
+        company: company,
+        email: email,
+        message: form.message.value.trim(),
+        _subject: 'Route enquiry from ' + (company || name),
+        _template: 'table'
+      })
+    }).then(function(r){ return r.json(); }).then(function(res){
+      if(res && (res.success === 'true' || res.success === true || res.ok === true)){
+        form.removeAttribute('aria-busy');
+        btn.textContent = 'Send enquiry'; btn.disabled = false;
+        msg.dataset.kind = 'ok';
+        msg.textContent = 'Enquiry sent. I will reply to ' + email + '.';
+        msg.setAttribute('tabindex', '-1');
+        msg.focus();
+        form.reset();
+        if(fb){ fb.dataset.show = 'false'; }
+      } else {
+        fail('That did not go through. Your message is ready to copy below, or email stefangel90@gmail.com directly.');
+      }
+    }).catch(function(){
+      fail('No connection to the form service. Your message is ready to copy below, or email stefangel90@gmail.com directly.');
+    });
   });
 
   // clear the invalid state as the user types
