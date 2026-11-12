@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stefan Angelovski — C+E driver, Benelux, Germany and Denmark</title>
+<meta name="description" content="International C+E driver with three years of long haul freight, ADR Basic and Tank, and pharma cold chain under GDP. Available immediately, with a base or hotel for the weekend rest.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Stefan Angelovski — C+E driver">
+<meta property="og:description" content="Three years of international freight. ADR Basic and Tank. Pharma cold chain under GDP. Available immediately.">
+<meta property="og:image" content="assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#131209">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+/* ---------- Geist, self hosted (variable 100-900, latin + latin-ext) ---------- */
+@font-face{font-family:Geist;font-style:normal;font-weight:100 900;font-display:swap;
+  src:url(assets/fonts/geist-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Geist;font-style:normal;font-weight:100 900;font-display:swap;
+  src:url(assets/fonts/geist-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+/* ---------- tokens: spacing 2 4 8 12 16 24 32 40 48 64 80 96 · radius 0 2 4 6 8 12 16 24 full ---------- */
+:root{
+  --s-25:2px; --s-50:4px; --s-75:8px; --s-100:12px; --s-200:16px; --s-300:24px;
+  --s-400:32px; --s-500:40px; --s-600:48px; --s-700:64px; --s-800:80px; --s-900:96px;
+  --r-xs:2px; --r-sm:4px; --r-md:6px; --r-lg:8px; --r-xl:12px; --r-2xl:16px; --r-3xl:24px; --r-full:9999px;
+  --bg:#131209; --surface-1:#181818; --surface-2:#1F1F1F; --surface-3:#272727; --surface-4:#313131;
+  --text:#FFFFFF; --muted:#9B9B9B; --faint:#8A8A8A; --line:rgba(255,255,255,.10); --line-strong:rgba(255,255,255,.18);
+  --accent:#F5A524; --accent-ink:#131209; --accent-hover:#FFB84D; --accent-tint:rgba(245,165,36,.12);
+  --danger:#FF8A7A;
+  --scrim-1:rgba(19,18,9,.96); --scrim-2:rgba(19,18,9,.86); --nav-glass:rgba(24,24,24,.72); --line-hover:rgba(255,255,255,.30);
+  --measure:680px; --portrait-w:360px; --portrait-max:420px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Geist,system-ui,sans-serif;
+  font-size:16px;line-height:24px;font-weight:400;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font-family:inherit;font-size:inherit;line-height:inherit}
+::selection{background:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:var(--r-sm)}
+
+/* ---------- named text styles (full scale; heading-4/5, title-2, body-5, button-sm, caption-4 are library styles, unused on this page) ---------- */
+.heading-1{font-size:60px;line-height:60px;font-weight:600;letter-spacing:-.02em}
+.heading-2{font-size:48px;line-height:48px;font-weight:600;letter-spacing:-.02em}
+.heading-3{font-size:36px;line-height:40px;font-weight:600;letter-spacing:-.015em}
+.heading-4{font-size:30px;line-height:36px;font-weight:600}
+.heading-5{font-size:24px;line-height:32px;font-weight:600}
+.heading-6{font-size:20px;line-height:28px;font-weight:600}
+.title-2{font-size:18px;line-height:28px;font-weight:500}
+.title-3{font-size:16px;line-height:24px;font-weight:500}
+.body-3{font-size:16px;line-height:24px;font-weight:400}
+.body-5{font-size:14px;line-height:20px;font-weight:500}
+.body-6{font-size:14px;line-height:20px;font-weight:400}
+.button-md{font-size:16px;line-height:24px;font-weight:600}
+.button-sm{font-size:14px;line-height:20px;font-weight:600}
+.caption-2{font-size:14px;line-height:20px;font-weight:400}
+.caption-4{font-size:12px;line-height:16px;font-weight:500}
+
+/* ---------- layout ---------- */
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 var(--s-300)}
+section{padding:var(--s-900) 0}
+section[id]{scroll-margin-top:88px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+
+/* ---------- skip link ---------- */
+.skip{position:absolute;left:-9999px;top:auto;background:var(--accent);color:var(--accent-ink);
+  padding:var(--s-100) var(--s-200);border-radius:var(--r-lg);font-weight:600;z-index:100}
+.skip:focus{left:var(--s-300);top:var(--s-300)}
+
+/* ---------- nav ---------- */
+.nav-shell{position:fixed;top:var(--s-300);left:0;right:0;z-index:60;display:flex;justify-content:center;pointer-events:none}
+.nav{pointer-events:auto;display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-300);
+  background:var(--nav-glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--line);border-radius:var(--r-full);padding:var(--s-75) var(--s-75) var(--s-75) var(--s-300)}
+.brand{display:flex;align-items:center;gap:var(--s-100);font-weight:600;font-size:14px;line-height:20px}
+.brand .dot{width:8px;height:8px;border-radius:var(--r-full);background:var(--accent)}
+.nav-links{display:flex;gap:var(--s-200)}
+.nav-links a{color:var(--muted);font-size:14px;line-height:20px;font-weight:500;
+  padding:var(--s-75) var(--s-100);border-radius:var(--r-full);
+  transition:color .3s var(--ease),background-color .3s var(--ease)}
+.nav-links a:hover{color:var(--text);background:var(--surface-3)}
+.nav-links a[aria-current="true"]{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--s-75);
+  background:var(--accent);color:var(--accent-ink);font-weight:600;border:0;cursor:pointer;
+  padding:var(--s-75) var(--s-100);border-radius:var(--r-full);
+  transition:transform .3s var(--ease),background-color .3s var(--ease)}
+.btn:hover{background:var(--accent-hover)}
+.btn:active{transform:scale(.98)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line-strong)}
+.btn-ghost:hover{background:var(--surface-3)}
+.nav .btn{font-size:14px;line-height:20px}
+.burger{display:none;background:transparent;border:1px solid var(--line-strong);border-radius:var(--r-full);
+  width:44px;height:44px;position:relative;cursor:pointer}
+.burger span{position:absolute;left:12px;right:12px;height:2px;background:var(--text);border-radius:var(--r-full);
+  transition:transform .5s var(--ease),opacity .3s var(--ease)}
+.burger span:nth-child(1){top:17px}
+.burger span:nth-child(2){top:25px}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){transform:translateY(-4px) rotate(-45deg)}
+
+/* mobile panel */
+.panel{position:fixed;inset:0;z-index:55;background:var(--scrim-1);
+  display:flex;flex-direction:column;justify-content:center;gap:var(--s-200);padding:var(--s-300);
+  opacity:0;visibility:hidden;
+  transition:opacity .5s var(--ease),visibility 0s linear .5s}
+.panel[data-open="true"]{opacity:1;visibility:visible;
+  transition:opacity .5s var(--ease),visibility 0s}
+.panel a{font-size:30px;line-height:36px;font-weight:600;color:var(--text);padding:var(--s-100) 0;
+  opacity:0;transform:translateY(24px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.panel[data-open="true"] a{opacity:1;transform:none}
+.panel[data-open="true"] a:nth-child(1){transition-delay:0ms}
+.panel[data-open="true"] a:nth-child(2){transition-delay:60ms}
+.panel[data-open="true"] a:nth-child(3){transition-delay:120ms}
+.panel[data-open="true"] a:nth-child(4){transition-delay:180ms}
+
+/* ---------- hero ---------- */
+.hero{padding:calc(var(--s-900) + var(--s-600)) 0 var(--s-800)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) var(--portrait-w);gap:var(--s-700);align-items:center}
+.hero-copy{min-width:0}
+.portrait{margin:0;border-radius:var(--r-3xl);overflow:hidden;border:1px solid var(--line);
+  background:var(--surface-1);position:relative}
+.portrait img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;display:block}
+.portrait figcaption{position:absolute;left:var(--s-200);bottom:var(--s-200);right:var(--s-200);
+  font-size:12px;line-height:16px;color:var(--text);background:var(--scrim-2);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:var(--s-75) var(--s-100);
+  border-radius:var(--r-lg);border:1px solid var(--line)}
+.hero h1{max-width:var(--measure);margin:0 0 var(--s-300);
+  background:linear-gradient(90deg,var(--text) 55%,var(--muted));-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;text-wrap:balance}
+.hero p.sub{max-width:var(--measure);margin:0 0 var(--s-400);color:var(--muted);font-size:20px;line-height:28px;text-wrap:pretty}
+.hero-actions{display:flex;flex-wrap:wrap;gap:var(--s-100);margin-bottom:var(--s-300)}
+.hero-actions .btn{padding:var(--s-100) var(--s-300);border-radius:var(--r-xl)}
+.proofline{display:flex;flex-wrap:wrap;gap:var(--s-100) var(--s-300);color:var(--faint);font-size:14px;line-height:20px;margin-bottom:var(--s-100)}
+.proofline span{display:inline-flex;align-items:center;gap:var(--s-75)}
+.proofline span::before{content:"";width:5px;height:5px;border-radius:var(--r-full);background:var(--accent);opacity:.7}
+.risk{margin:var(--s-75) 0 0;color:var(--muted);max-width:min(520px,100%)}
+
+/* ---------- freight strip ---------- */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:var(--s-600) 0}
+.strip-inner{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s-200) var(--s-600)}
+.strip .label{color:var(--faint);font-size:12px;line-height:16px;letter-spacing:.08em;text-transform:uppercase}
+.strip ul{display:flex;flex-wrap:wrap;gap:var(--s-200) var(--s-500);list-style:none;margin:0;padding:0}
+.strip li{font-size:20px;line-height:28px;font-weight:500;color:var(--muted)}
+
+/* ---------- benefits ---------- */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-200)}
+.card{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--r-2xl);padding:var(--s-400)}
+.card h3{margin:0 0 var(--s-100)}
+.card p{margin:0;color:var(--muted);text-wrap:pretty}
+.card .num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;
+  border-radius:var(--r-lg);background:var(--surface-3);color:var(--accent);font-size:14px;font-weight:600;margin-bottom:var(--s-200)}
+.section-head{max-width:var(--measure);margin-bottom:var(--s-600)}
+.section-head h2{margin:0 0 var(--s-200);text-wrap:balance}
+.section-head p{margin:0;color:var(--muted);text-wrap:pretty}
+
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-200)}
+.step{padding:var(--s-400);border-radius:var(--r-2xl);background:var(--surface-2);border:1px solid var(--line)}
+.step .k{color:var(--accent);font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em}
+.step h3{margin:var(--s-100) 0 var(--s-75)}
+.step p{margin:0;color:var(--muted);text-wrap:pretty}
+
+/* ---------- tagline reveal ---------- */
+.tagline{padding:var(--s-900) 0}
+.tagline p{max-width:900px;margin:0;font-size:48px;line-height:48px;font-weight:600;letter-spacing:-.02em;text-wrap:balance}
+.tagline .w{color:var(--text);transition:opacity .7s var(--ease)}
+.js .tagline .w{opacity:.28}
+.tagline .w.on{opacity:1}
+
+/* ---------- certificates ---------- */
+.certs{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-200)}
+.cert{display:flex;gap:var(--s-200);padding:var(--s-300);background:var(--surface-1);
+  border:1px solid var(--line);border-radius:var(--r-xl)}
+.cert .tick{flex:0 0 auto;width:24px;height:24px;border-radius:var(--r-full);background:var(--accent-tint);
+  display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:12px;font-weight:600}
+.cert h3{margin:0 0 var(--s-25)}
+.cert p{margin:0;color:var(--muted);font-size:14px;line-height:20px;text-wrap:pretty}
+.note{margin-top:var(--s-300);padding:var(--s-300);border-radius:var(--r-xl);background:var(--surface-2);
+  border:1px solid var(--line);color:var(--muted);font-size:14px;line-height:20px;max-width:620px}
+
+/* ---------- experience ---------- */
+.timeline{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
+.timeline li{position:relative;padding:0 0 var(--s-400) var(--s-300)}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:"";position:absolute;left:-4px;top:6px;width:7px;height:7px;border-radius:var(--r-full);
+  background:var(--accent)}
+.timeline .when{color:var(--faint);font-size:12px;line-height:16px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.timeline h3{margin:var(--s-25) 0 var(--s-75)}
+.timeline p{margin:0;color:var(--muted);max-width:560px;text-wrap:pretty}
+
+/* ---------- faq ---------- */
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:var(--s-200);
+  padding:var(--s-300) 0;font-size:18px;line-height:28px;font-weight:500}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--accent);font-weight:600}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0;padding:0 0 var(--s-300);color:var(--muted);max-width:560px;text-wrap:pretty}
+
+/* ---------- contact ---------- */
+.contact-card{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--r-3xl);padding:var(--s-600)}
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--s-600)}
+.contact-card h2{margin:0 0 var(--s-100)}
+.contact-card p.lead{margin:0 0 var(--s-400);color:var(--muted);max-width:520px;text-wrap:pretty}
+.contact-actions{display:flex;flex-wrap:wrap;gap:var(--s-100)}
+.field{display:flex;flex-direction:column;gap:var(--s-75);margin-bottom:var(--s-200)}
+.field label{font-size:14px;line-height:20px;font-weight:500;color:var(--muted)}
+.field input,.field textarea{background:var(--surface-2);border:1px solid var(--line-strong);color:var(--text);
+  border-radius:var(--r-lg);padding:var(--s-100) var(--s-200);font:inherit;font-size:16px;line-height:24px;
+  transition:border-color .3s var(--ease),background-color .3s var(--ease)}
+.field input:hover,.field textarea:hover{border-color:var(--line-hover)}
+.field textarea{min-height:112px;resize:vertical}
+.field .err{color:var(--danger);font-size:12px;line-height:16px;display:none}
+.field[data-invalid="true"] input,.field[data-invalid="true"] textarea{border-color:var(--danger)}
+.field[data-invalid="true"] .err{display:block}
+.form-msg{margin-top:var(--s-200);font-size:14px;line-height:20px;color:var(--accent)}
+.form-msg[data-kind="error"]{color:var(--danger)}
+#enquiry .btn{width:100%;padding:var(--s-100) var(--s-200)}
+.cv-download{margin:var(--s-300) 0 0;color:var(--faint)}
+.u-link{text-decoration:underline;text-underline-offset:3px}
+.legal{padding:var(--s-600) 0;border-top:1px solid var(--line)}
+.legal h2{margin:0 0 var(--s-100)}
+.legal p{color:var(--muted);max-width:520px;margin:0}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s-200);color:var(--faint);font-size:14px;line-height:20px}
+.foot nav{display:flex;gap:var(--s-300)}
+.foot a{display:inline-block;padding:var(--s-100) 0;margin:calc(-1 * var(--s-100)) 0}
+.foot a:hover{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- reveals ---------- */
+.js .reveal{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* ---------- responsive: snap down the scale, never invent sizes ---------- */
+@media (max-width:1100px){
+  .hero-grid{grid-template-columns:1fr;gap:var(--s-400)}
+  .portrait{max-width:var(--portrait-max)}
+}
+@media (max-width:900px){
+  .heading-1{font-size:48px;line-height:48px}
+  .heading-2{font-size:36px;line-height:40px}
+  .tagline p{font-size:36px;line-height:40px}
+  .grid,.certs{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  section{padding:var(--s-700) 0}
+  .hero{padding:calc(var(--s-800) + var(--s-600)) 0 var(--s-600)}
+}
+@media (max-width:640px){
+  .js .nav-links,.js .nav .btn{display:none}
+  .js .burger{display:block}
+  html:not(.js) .burger{display:none}
+  .heading-1{font-size:36px;line-height:40px}
+  .heading-2{font-size:30px;line-height:36px}
+  .hero p.sub{font-size:18px;line-height:28px}
+  .tagline p{font-size:30px;line-height:36px}
+  .wrap{padding:0 var(--s-200)}
+  .contact-card{padding:var(--s-400)}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  .js .reveal{opacity:1;transform:none}
+  .js .tagline .w{opacity:1}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Stefan Angelovski",
+  "jobTitle": "International C+E driver",
+  "email": "stefangel90@gmail.com",
+  "telephone": "+359879105874",
+  "address": {"@type": "PostalAddress", "addressLocality": "Sofia", "addressCountry": "BG"},
+  "knowsLanguage": ["en", "bg", "mk", "de"],
+  "hasCredential": [
+    {"@type": "EducationalOccupationalCredential", "credentialCategory": "CE driving licence"},
+    {"@type": "EducationalOccupationalCredential", "credentialCategory": "Driver CPC, Code 95"},
+    {"@type": "EducationalOccupationalCredential", "credentialCategory": "ADR Basic and Tank"},
+    {"@type": "EducationalOccupationalCredential", "credentialCategory": "Digital tachograph card"}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="nav-shell">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="#top" aria-label="Stefan Angelovski, home">
+      <span class="dot" aria-hidden="true"></span> Stefan Angelovski
+    </a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#questions">Questions</a>
+    </div>
+    <a class="btn" href="#contact">Request my CV</a>
+    <button class="burger" aria-expanded="false" aria-controls="panel" aria-label="Menu"><span></span><span></span></button>
+  </nav>
+</div>
+
+<div class="panel" id="panel" data-open="false" aria-hidden="true">
+  <a href="#work">Work</a>
+  <a href="#certificates">Certificates</a>
+  <a href="#questions">Questions</a>
+  <a href="#contact">Request my CV</a>
+</div>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+      <h1 class="heading-1">C+E driver for Benelux,<br>Germany and Denmark</h1>
+      <p class="sub">Three years of international freight, ADR Basic and Tank, and pharma cold chain under GDP. Available immediately. Needs a base or a hotel for the 45 hour weekend rest.</p>
+      <div class="hero-actions">
+        <a class="btn button-md" href="#contact">Request my CV</a>
+        <a class="btn btn-ghost button-md" href="#certificates">See certificates</a>
+      </div>
+      <div class="proofline caption-2">
+        <span>EU citizen, no work permit needed</span>
+        <span>Available immediately</span>
+        <span>Base or hotel for the weekend rest</span>
+        <span>Open to rotation</span>
+      </div>
+      <p class="risk caption-2">No agency, no fee, no placement contract. You deal with the driver directly.</p>
+      </div>
+      <figure class="portrait">
+        <img src="assets/portrait.jpg"
+             srcset="assets/portrait-480.jpg 480w, assets/portrait.jpg 800w"
+             sizes="(max-width: 900px) 100vw, 360px"
+             alt="Stefan Angelovski at the wheel of a truck cab" width="720" height="900"
+             fetchpriority="high" decoding="async">
+        <figcaption>Stefan Angelovski</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap strip-inner">
+      <span class="label">Freight carried for</span>
+      <ul>
+        <li>DSV</li><li>LKW Walter</li><li>Jysk</li><li>Leman</li><li>Pfenning</li>
+      </ul>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="heading-2">What you get on the first day</h2>
+        <p class="body-3">A driver who can take a loaded trailer out of the yard without a training week, and who will not leave you short on a Monday morning.</p>
+      </div>
+      <div class="grid">
+        <article class="card reveal">
+          <span class="num">01</span>
+          <h3 class="heading-6">Direct employment only</h3>
+          <p class="body-3">No agency, no payroll company, no subcontracting. One contract with your company, on your collective agreement, with every allowance written down.</p>
+        </article>
+        <article class="card reveal">
+          <span class="num">02</span>
+          <h3 class="heading-6">Certificates ready</h3>
+          <p class="body-3">CE licence, Code 95, ADR Basic and Tank, digital tachograph card. All four are held now, with numbers and expiry dates available on request.</p>
+        </article>
+        <article class="card reveal">
+          <span class="num">03</span>
+          <h3 class="heading-6">Cold chain discipline</h3>
+          <p class="body-3">Pharma under GDP: temperature set points held through the trip, validated loading and unloading, and the paperwork that goes with both.</p>
+        </article>
+        <article class="card reveal">
+          <span class="num">04</span>
+          <h3 class="heading-6">The corridors you already run</h3>
+          <p class="body-3">Benelux, Scandinavia and northern Germany, with terminal work in Malmö and container freight on the northern corridors.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="heading-2">From first message to first load</h2>
+        <p class="body-3">No recruiter, no interview panel, no waiting on head office. Three steps, and you know whether it works.</p>
+      </div>
+      <div class="steps">
+        <article class="step reveal">
+          <span class="k">STEP ONE</span>
+          <h3 class="heading-6">Send the route</h3>
+          <p class="body-3">Tell me the corridor, the schedule and where the unit stands between tours. One message, or a phone call if that is faster.</p>
+        </article>
+        <article class="step reveal">
+          <span class="k">STEP TWO</span>
+          <h3 class="heading-6">Check the paperwork</h3>
+          <p class="body-3">Licence, Code 95, ADR Basic and Tank, digital tachograph card. Numbers and expiry dates come back the same day, so your compliance file is complete before the first load.</p>
+        </article>
+        <article class="step reveal">
+          <span class="k">STEP THREE</span>
+          <h3 class="heading-6">Agree the terms, then start</h3>
+          <p class="body-3">Gross wage, allowances, rotation and home base, written down before anything moves. If the numbers work, I can start immediately with no notice period to serve.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="tagline" id="tagline" aria-label="Summary">
+    <div class="wrap">
+      <p class="reveal-words">Three years of freight across northern Europe, and a trailer that leaves on time.</p>
+    </div>
+  </section>
+
+  <section id="certificates">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="heading-2">Licences and certificates</h2>
+        <p class="body-3">Every document below can be produced on request, with numbers and dates.</p>
+      </div>
+      <div class="certs">
+        <div class="cert reveal">
+          <span class="tick" aria-hidden="true">CE</span>
+          <div>
+            <h3 class="title-3">CE licence</h3>
+            <p>Heavy truck with trailer, in daily use on international routes. Licence and card produced at interview.</p>
+          </div>
+        </div>
+        <div class="cert reveal">
+          <span class="tick" aria-hidden="true">95</span>
+          <div>
+            <h3 class="title-3">Code 95, Driver CPC</h3>
+            <p>Periodic training completed under the Driver CPC requirement, on the certificate held.</p>
+          </div>
+        </div>
+        <div class="cert reveal">
+          <span class="tick" aria-hidden="true">ADR</span>
+          <div>
+            <h3 class="title-3">ADR Basic and Tank</h3>
+            <p>Dangerous goods by road, packages and tanks, on the certificate held.</p>
+          </div>
+        </div>
+        <div class="cert reveal">
+          <span class="tick" aria-hidden="true">DG</span>
+          <div>
+            <h3 class="title-3">Digital tachograph card</h3>
+            <p>Driver card in use, with records kept daily and presented at roadside controls.</p>
+          </div>
+        </div>
+      </div>
+      <p class="note reveal">GDP driver training was completed with Leman in July 2024, document PH 02 10419 v4, and the annual refresher fell due in July 2025. It is stated here rather than hidden: the refresher can be renewed before a start date, and pharma work would begin after that renewal.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="heading-2">Experience</h2>
+        <p class="body-3">Three years on international routes, plus earlier work running operations.</p>
+      </div>
+      <ul class="timeline">
+        <li class="reveal">
+          <span class="when">2023 to now</span>
+          <h3 class="heading-6">International C+E driver, Benelux and Scandinavia</h3>
+          <p class="body-3">Long haul freight through European carriers, with GDP driver training through Leman's subcontractor Interlink. Pharma cold chain under GDP, curtain side freight for DSV and LKW Walter, retail distribution for Jysk, supermarket drops with temperature control, and terminal work at Malmö.</p>
+        </li>
+        <li class="reveal">
+          <span class="when">2022 to 2023</span>
+          <h3 class="heading-6">Community moderator, remote</h3>
+          <p class="body-3">High volume international channels, real time escalation and conflict resolution.</p>
+        </li>
+        <li class="reveal">
+          <span class="when">2014 to 2017</span>
+          <h3 class="heading-6">Founder and manager, Atletiks Fitness</h3>
+          <p class="body-3">Operations for more than 50 clients: scheduling, accounting, sales and marketing.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="faq" id="questions">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="heading-2">Questions a dispatcher asks</h2>
+        <p class="body-3">Answered before you have to ask them on a call.</p>
+      </div>
+      <details class="reveal"><summary>Do you need a work permit?</summary><p>No. EU citizen, Bulgarian passport. No permit, no sponsorship, no visa process. Registration and tax number are handled on arrival in the country of employment.</p></details>
+      <details class="reveal"><summary>Where would you be based?</summary><p>Sofia is home, and I travel from there. For the 45 hour weekend rest I need a base or a hotel near the depot, or accommodation the company provides. Any depot with somewhere to sleep works.</p></details>
+      <details class="reveal"><summary>Which countries have you driven?</summary><p>Sweden, Denmark, the Netherlands, Belgium and Germany. Terminal work so far has been in Malmö.</p></details>
+      <details class="reveal"><summary>Can you do rotation?</summary><p>Yes. Three to six week tours, with a base or a hotel for the 45 hour weekend rest. Fixed weekly schedules work too.</p></details>
+      <details class="reveal"><summary>Is your ADR valid for tankers?</summary><p>ADR Basic and Tank, yes. Tanker experience is limited to what the licence covers, so a silo or chemical fleet should expect a short induction rather than a finished tanker driver.</p></details>
+      <details class="reveal"><summary>What about your GDP certificate?</summary><p>Completed July 2024, refresher due July 2025. I will renew before a start date rather than claim it is current today.</p></details>
+      <details class="reveal"><summary>What are your language levels?</summary><p>English at C2, Bulgarian and Macedonian native, German basic (A2). Enough for depots and paperwork with support, not enough for a German only dispatch desk.</p></details>
+      <details class="reveal"><summary>When can you start?</summary><p>Immediately. No notice period to serve.</p></details>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-card">
+        <div class="contact-grid">
+          <div>
+            <h2 class="heading-3">Send the route, get a driver</h2>
+            <p class="lead">Tell me the corridor and the schedule. You get a reply, and the CV with certificate numbers attached.</p>
+            <div class="contact-actions">
+              <a class="btn button-md" href="mailto:stefangel90@gmail.com?subject=C%2BE%20driver%20enquiry">Email Stefan</a>
+              <a class="btn btn-ghost button-md" href="tel:+359879105874">+359 879 105 874</a>
+            </div>
+            <p class="caption-2 cv-download">
+              <a class="u-link" href="assets/Stefan-Angelovski-CV.pdf">Download the CV as PDF</a>
+            </p>
+          </div>
+          <form id="enquiry" novalidate>
+            <div class="field" data-field="name">
+              <label for="f-name">Your name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required>
+              <span class="err" role="alert">Add your name so I know who I am replying to.</span>
+            </div>
+            <div class="field" data-field="company">
+              <label for="f-company">Company</label>
+              <input id="f-company" name="company" type="text" autocomplete="organization">
+            </div>
+            <div class="field" data-field="email">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+              <span class="err" role="alert">That email address is missing an @ or a domain.</span>
+            </div>
+            <div class="field" data-field="message">
+              <label for="f-message">The route and schedule</label>
+              <textarea id="f-message" name="message" required></textarea>
+              <span class="err" role="alert">A line about the corridor is enough to start.</span>
+            </div>
+            <button class="btn button-md" type="submit">Send enquiry</button>
+            <p class="form-msg" id="form-msg" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>Stefan Angelovski, Sofia, Bulgaria. Updated November 2026.</span>
+    <nav aria-label="Legal">
+      <a href="#privacy">Privacy</a>
+      <a href="#privacy">Imprint</a>
+      <a href="#top">Back to top</a>
+    </nav>
+  </div>
+</footer>
+
+<section id="privacy" class="legal">
+  <div class="wrap">
+    <h2 class="heading-6">Privacy and imprint</h2>
+    <p class="body-6">
+      This site sets no cookies, runs no analytics and loads nothing from another domain. The font is served from this site. The enquiry form does not send anything to a server: it opens your own mail client with the message filled in. Anything you send by email is used to reply to you and for nothing else. Imprint: Stefan Angelovski, Sofia, Bulgaria, stefangel90@gmail.com.
+    </p>
+  </div>
+</section>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var supportsIO = 'IntersectionObserver' in window;
+
+  // section reveals, once
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.15, rootMargin:'0px 0px -8% 0px'});
+  if(supportsIO){ document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); }); }
+  else { document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }
+
+  // tagline: word by word
+  var tag = document.querySelector('.reveal-words');
+  var spans = [];
+  if(tag){
+    var words = tag.textContent.trim().split(/\s+/);
+    tag.textContent = '';
+    spans = words.map(function(w){
+      var s = document.createElement('span');
+      s.className = 'w';
+      s.textContent = w + ' ';
+      tag.appendChild(s);
+      return s;
+    });
+    if(reduce || !supportsIO){ spans.forEach(function(s){ s.classList.add('on'); }); }
+    else {
+      var tio = new IntersectionObserver(function(entries, obs){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            spans.forEach(function(s,i){ setTimeout(function(){ s.classList.add('on'); }, i*70); });
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {threshold:.35});
+      tio.observe(tag);
+    }
+  }
+
+  // safety net: reveal whatever is in view if the observer never delivers
+  function catchUp(){
+    var vh = innerHeight;
+    document.querySelectorAll('.reveal:not(.in)').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < vh * .92 && r.bottom > 0){ el.classList.add('in'); }
+    });
+    if(tag && spans.length && !tag.dataset.lit){
+      var tr = tag.getBoundingClientRect();
+      if(tr.top < vh && tr.bottom > 0){
+        tag.dataset.lit = '1';
+        spans.forEach(function(sp){ sp.classList.add('on'); });
+      }
+    }
+  }
+  if(!reduce){
+    setTimeout(catchUp, 1500);
+    var lastRun = 0;
+    addEventListener('scroll', function(){
+      var now = Date.now();
+      if(now - lastRun < 120){ return; }
+      lastRun = now;
+      catchUp();
+    }, {passive:true});
+  }
+
+  // mobile panel
+  var burger = document.querySelector('.burger');
+  var panel = document.getElementById('panel');
+  var lastFocus = null;
+  function setPanel(open){
+    panel.dataset.open = open ? 'true' : 'false';
+    panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+    if(open){
+      lastFocus = document.activeElement;
+      var first = panel.querySelector('a');
+      if(first){ setTimeout(function(){ first.focus(); }, 60); }
+    } else if(lastFocus){
+      lastFocus.focus();
+      lastFocus = null;
+    }
+  }
+  panel.addEventListener('keydown', function(e){
+    if(e.key !== 'Tab') return;
+    var items = panel.querySelectorAll('a');
+    if(!items.length) return;
+    var first = items[0], last = items[items.length - 1];
+    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  });
+  burger.addEventListener('click', function(){ setPanel(panel.dataset.open !== 'true'); });
+  panel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setPanel(false); }); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ setPanel(false); } });
+
+  // enquiry form: validate, then hand to the mail client
+  var form = document.getElementById('enquiry');
+  var msg = document.getElementById('form-msg');
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var bad = false;
+    ['name','email','message'].forEach(function(key){
+      var wrap = form.querySelector('[data-field="'+key+'"]');
+      var input = wrap.querySelector('input,textarea');
+      var val = (input.value || '').trim();
+      var ok = key === 'email'
+        ? /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)
+        : val.length > 0;
+      wrap.dataset.invalid = ok ? 'false' : 'true';
+      if(!ok && !bad){ input.focus(); }
+      if(!ok){ bad = true; }
+    });
+    if(bad){
+      var n = form.querySelectorAll('.field[data-invalid="true"]').length;
+      msg.dataset.kind = 'error';
+      msg.textContent = n === 1 ? 'One field needs attention before this can send.'
+                                : n + ' fields need attention before this can send.';
+      return;
+    }
+    var name = form.name.value.trim();
+    var company = form.company.value.trim();
+    var body = 'Name: ' + name + (company ? '\nCompany: ' + company : '') +
+               '\n\n' + form.message.value.trim();
+    var btn = form.querySelector('button[type=submit]');
+    var link = 'mailto:stefangel90@gmail.com'
+      + '?subject=' + encodeURIComponent('Route enquiry from ' + (company || name))
+      + '&body=' + encodeURIComponent(body);
+
+    msg.dataset.kind = 'ok';
+    msg.textContent = 'Opening your mail app with the enquiry filled in.';
+    btn.textContent = 'Opening your mail app';
+    btn.disabled = true;
+
+    // restore the button before handing off to the mail client, so the page is usable if it stays
+    setTimeout(function(){ btn.textContent = 'Send enquiry'; btn.disabled = false; }, 2500);
+    setTimeout(function(){ window.location.href = link; }, 80);
+  });
+
+  // clear the invalid state as the user types
+  form.querySelectorAll('input,textarea').forEach(function(el){
+    el.addEventListener('input', function(){
+      el.closest('.field').dataset.invalid = 'false';
+    });
+  });
+})();
+</script>
+</body>
+</html>
