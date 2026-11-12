@@ -781,6 +781,7 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
         email: email,
         message: form.message.value.trim(),
         _subject: 'Route enquiry from ' + (company || name),
+        _replyto: email,
         _template: 'table'
       })
     }).then(function(r){ return r.json(); }).then(function(res){
