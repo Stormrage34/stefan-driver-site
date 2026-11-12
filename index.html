@@ -17,6 +17,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#131209">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/geist-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* ---------- Geist, self hosted (variable 100-900, latin + latin-ext) ---------- */
 @font-face{font-family:Geist;font-style:normal;font-weight:100 900;font-display:swap;
@@ -132,6 +134,7 @@ section[id]{scroll-margin-top:88px}
 .hero-copy{min-width:0}
 .portrait{margin:var(--s-50) 0 0;border-radius:var(--r-3xl);overflow:hidden;border:1px solid var(--line);
   background:var(--surface-1);position:relative}
+.portrait picture{display:block}
 .portrait img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;display:block}
 .portrait figcaption{position:absolute;left:var(--s-200);bottom:var(--s-200);right:var(--s-200);
   font-size:12px;line-height:16px;color:var(--text);background:var(--scrim-2);
@@ -180,7 +183,7 @@ section[id]{scroll-margin-top:88px}
 .tagline{padding:var(--s-900) 0}
 .tagline p{max-width:900px;margin:0;font-size:48px;line-height:48px;font-weight:600;letter-spacing:-.02em;text-wrap:balance}
 .tagline .w{color:var(--text);transition:opacity .7s var(--ease)}
-.js .tagline .w{opacity:.28}
+.js .tagline .w{opacity:.5}
 .tagline .w.on{opacity:1}
 
 /* ---------- certificates ---------- */
@@ -359,11 +362,16 @@ footer{border-top:1px solid var(--line);padding:var(--s-600) 0}
       <p class="risk caption-2">No agency, no fee, no placement contract. You deal with the driver directly.</p>
       </div>
       <figure class="portrait">
-        <img src="assets/portrait.jpg"
-             srcset="assets/portrait-480.jpg 480w, assets/portrait.jpg 800w"
-             sizes="(max-width: 900px) 100vw, 360px"
-             alt="Stefan Angelovski at the wheel of a truck cab" width="720" height="900"
-             fetchpriority="high" decoding="async">
+        <picture>
+          <source type="image/webp"
+                  srcset="assets/portrait-480.webp 480w, assets/portrait.webp 720w"
+                  sizes="(max-width: 900px) 100vw, 360px">
+          <img src="assets/portrait.jpg"
+               srcset="assets/portrait-480.jpg 480w, assets/portrait.jpg 720w"
+               sizes="(max-width: 900px) 100vw, 360px"
+               alt="Stefan Angelovski at the wheel of a truck cab" width="720" height="900"
+               fetchpriority="high" decoding="async">
+        </picture>
         <figcaption>Stefan Angelovski</figcaption>
       </figure>
     </div>
